@@ -50,9 +50,6 @@ class ProbeClass {
           this.position[0]--;
         }
         break;
-
-      default:
-        break;
     }
   }
 
