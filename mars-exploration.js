@@ -15,6 +15,9 @@ class ProbeClass {
       (direction) => direction === this.direction
     );
     if (side === "R") {
+      if (index + 1 == this.directions.length) {
+        index = index - 4;
+      }
       this.direction = this.directions[index + 1];
     }
   }
