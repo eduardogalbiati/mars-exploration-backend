@@ -2,6 +2,7 @@ class ProbeClass {
   direction = "";
   position = [];
   gridSize = [];
+  directions = ["N", "E", "S", "W"];
 
   constructor(config) {
     this.position = config.startPosition;
@@ -10,10 +11,12 @@ class ProbeClass {
   }
 
   sendCommands(commands) {
-    return {
-      position: [1, 3],
-      direction: "N",
-    };
+    if(commands[0] == 'R') {
+        return {
+            position: this.position,
+            direction: 'E',
+        }
+    }
   }
 }
 
