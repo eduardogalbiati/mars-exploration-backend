@@ -19,3 +19,20 @@ describe("Mars exploration use case", () => {
     });
   });
 });
+
+describe("Mars exploration unit tests", () => {
+  const probeConfig = {
+    startPosition: [1, 2],
+    startDirection: "N",
+    gridSize: [5, 5],
+  };
+
+  it("should be constructed properly", () => {
+    const Probe = new ProbeClass(probeConfig);
+    expect(Probe).toEqual({
+        position : probeConfig.startPosition,
+        direction: probeConfig.startDirection,
+        gridSize: probeConfig.gridSize
+    });
+  });
+});
