@@ -1,7 +1,7 @@
 const { ProbeClass } = require("./mars-exploration");
 
 describe("Mars exploration use case", () => {
-  it("should return final position after send commands to first probe", () => {
+  xit("should return final position after send commands to first probe", () => {
     const probeConfig = {
       startPosition: [1, 2],
       startDirection: "N",
@@ -30,9 +30,77 @@ describe("Mars exploration unit tests", () => {
   it("should be constructed properly", () => {
     const Probe = new ProbeClass(probeConfig);
     expect(Probe).toEqual({
-        position : probeConfig.startPosition,
-        direction: probeConfig.startDirection,
-        gridSize: probeConfig.gridSize
+      position: probeConfig.startPosition,
+      direction: probeConfig.startDirection,
+      gridSize: probeConfig.gridSize,
+      directions: ["N", "E", "S", "W"],
+    });
+  });
+
+  describe("Probe Movement", () => {
+    it("should turn to right", () => {
+      const commands = ["R"];
+
+      const Probe = new ProbeClass(probeConfig);
+
+      const result = Probe.sendCommands(commands);
+
+      expect(result).toEqual({
+        position: probeConfig.startPosition,
+        direction: "E",
+      });
+    });
+
+    it("should turn to right if position equals last element of directions array", () => {
+      const commands = ["R"];
+
+      const customProbeConfig = {
+        ...probeConfig,
+        startDirection: "W",
+      };
+      const Probe = new ProbeClass(customProbeConfig);
+
+      const result = Probe.sendCommands(commands);
+
+      expect(result).toEqual({
+        position: probeConfig.startPosition,
+        direction: "N",
+      });
+    });
+
+    it("should turn to left", () => {
+      const customProbeConfig = {
+        ...probeConfig,
+        startDirection: "W",
+      };
+
+      const commands = ["L"];
+
+      const Probe = new ProbeClass(customProbeConfig);
+
+      const result = Probe.sendCommands(commands);
+
+      expect(result).toEqual({
+        position: customProbeConfig.startPosition,
+        direction: "S",
+      });
+    });
+
+    it("should turn to left if position equals first element of directions array", () => {
+      const commands = ["L"];
+
+      const customProbeConfig = {
+        ...probeConfig,
+        startDirection: "N",
+      };
+      const Probe = new ProbeClass(customProbeConfig);
+
+      const result = Probe.sendCommands(commands);
+
+      expect(result).toEqual({
+        position: probeConfig.startPosition,
+        direction: "W",
+      });
     });
   });
 });
