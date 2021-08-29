@@ -1,5 +1,13 @@
 class ProbeClass {
-  constructor(config) {}
+  direction = "";
+  position = [];
+  gridSize = [];
+
+  constructor(config) {
+    this.position = config.startPosition;
+    this.direction = config.startDirection;
+    this.gridSize = config.gridSize;
+  }
 
   sendCommands(commands) {
     return {
