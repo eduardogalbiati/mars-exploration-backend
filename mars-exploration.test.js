@@ -103,4 +103,78 @@ describe("Mars exploration unit tests", () => {
       });
     });
   });
+
+  describe("Probe Flying", () => {
+    it("should fly to north if probe direction is north", () => {
+      const customProbeConfig = {
+        ...probeConfig,
+        startDirection: "N",
+        startPosition: [0, 0],
+      };
+      const commands = ["M"];
+
+      const Probe = new ProbeClass(customProbeConfig);
+
+      const result = Probe.sendCommands(commands);
+
+      expect(result).toEqual({
+        position: [0, 1],
+        direction: customProbeConfig.startDirection,
+      });
+    });
+
+    it("should fly to east if probe direction is east", () => {
+        const customProbeConfig = {
+          ...probeConfig,
+          startDirection: "E",
+          startPosition: [0, 0],
+        };
+        const commands = ["M"];
+  
+        const Probe = new ProbeClass(customProbeConfig);
+  
+        const result = Probe.sendCommands(commands);
+  
+        expect(result).toEqual({
+          position: [1, 0],
+          direction: customProbeConfig.startDirection,
+        });
+      });
+
+      it("should fly to south if probe direction is south", () => {
+        const customProbeConfig = {
+          ...probeConfig,
+          startDirection: "S",
+          startPosition: [1, 1],
+        };
+        const commands = ["M"];
+  
+        const Probe = new ProbeClass(customProbeConfig);
+  
+        const result = Probe.sendCommands(commands);
+  
+        expect(result).toEqual({
+          position: [1, 0],
+          direction: customProbeConfig.startDirection,
+        });
+      });
+
+      it("should fly to west if probe direction is west", () => {
+        const customProbeConfig = {
+          ...probeConfig,
+          startDirection: "W",
+          startPosition: [1, 1],
+        };
+        const commands = ["M"];
+  
+        const Probe = new ProbeClass(customProbeConfig);
+  
+        const result = Probe.sendCommands(commands);
+  
+        expect(result).toEqual({
+          position: [0, 1],
+          direction: customProbeConfig.startDirection,
+        });
+      });
+  });
 });

@@ -28,10 +28,41 @@ class ProbeClass {
     }
   }
 
+  flyFoward() {
+    switch (this.direction) {
+      case "N":
+        if (this.position[1] + 1 <= this.gridSize[1]) {
+          this.position[1]++;
+        }
+        break;
+      case "E":
+        if (this.position[0] + 1 <= this.gridSize[0]) {
+          this.position[0]++;
+        }
+        break;
+      case "S":
+        if (this.position[1] - 1 >= 0) {
+          this.position[1]--;
+        }
+        break;
+      case "W":
+        if (this.position[0] - 1 >= 0) {
+          this.position[0]--;
+        }
+        break;
+
+      default:
+        break;
+    }
+  }
+
   sendCommands(commands) {
     commands.forEach((command) => {
       if (command === "R" || command === "L") {
         this.setDirection(command);
+      }
+      if (command === "M") {
+        this.flyFoward();
       }
     });
     return {
