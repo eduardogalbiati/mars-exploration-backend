@@ -158,5 +158,23 @@ describe("Mars exploration unit tests", () => {
           direction: customProbeConfig.startDirection,
         });
       });
+
+      it("should fly to west if probe direction is west", () => {
+        const customProbeConfig = {
+          ...probeConfig,
+          startDirection: "W",
+          startPosition: [1, 1],
+        };
+        const commands = ["M"];
+  
+        const Probe = new ProbeClass(customProbeConfig);
+  
+        const result = Probe.sendCommands(commands);
+  
+        expect(result).toEqual({
+          position: [0, 1],
+          direction: customProbeConfig.startDirection,
+        });
+      });
   });
 });
