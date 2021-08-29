@@ -35,4 +35,19 @@ describe("Mars exploration unit tests", () => {
         gridSize: probeConfig.gridSize
     });
   });
+
+  describe('Probe Movement', () => {
+    it('should turn to right', () => {
+        const commands = ['R'];
+
+        const Probe = new ProbeClass(probeConfig);
+
+        const result = Probe.sendCommands(commands);
+
+        expect(result).toEqual({
+            position: probeConfig.startPosition,
+            direction: 'E'
+        })
+    })
+  })
 });
