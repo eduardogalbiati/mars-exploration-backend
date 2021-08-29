@@ -30,42 +30,42 @@ describe("Mars exploration unit tests", () => {
   it("should be constructed properly", () => {
     const Probe = new ProbeClass(probeConfig);
     expect(Probe).toEqual({
-        position : probeConfig.startPosition,
-        direction: probeConfig.startDirection,
-        gridSize: probeConfig.gridSize,
-        directions: ["N", "E", "S", "W"],
+      position: probeConfig.startPosition,
+      direction: probeConfig.startDirection,
+      gridSize: probeConfig.gridSize,
+      directions: ["N", "E", "S", "W"],
     });
   });
 
-  describe('Probe Movement', () => {
-    it('should turn to right', () => {
-        const commands = ['R'];
+  describe("Probe Movement", () => {
+    it("should turn to right", () => {
+      const commands = ["R"];
 
-        const Probe = new ProbeClass(probeConfig);
+      const Probe = new ProbeClass(probeConfig);
 
-        const result = Probe.sendCommands(commands);
+      const result = Probe.sendCommands(commands);
 
-        expect(result).toEqual({
-            position: probeConfig.startPosition,
-            direction: 'E'
-        })
+      expect(result).toEqual({
+        position: probeConfig.startPosition,
+        direction: "E",
+      });
     });
 
-    it('should turn to right if position equals last element of directions array', () => {
-        const commands = ['R'];
+    it("should turn to right if position equals last element of directions array", () => {
+      const commands = ["R"];
 
-        const customProbeConfig = {
-            ...probeConfig,
-            startDirection: 'W'
-        }
-        const Probe = new ProbeClass(customProbeConfig);
+      const customProbeConfig = {
+        ...probeConfig,
+        startDirection: "W",
+      };
+      const Probe = new ProbeClass(customProbeConfig);
 
-        const result = Probe.sendCommands(commands);
+      const result = Probe.sendCommands(commands);
 
-        expect(result).toEqual({
-            position: probeConfig.startPosition,
-            direction: 'N'
-        })
-    })
-  })
+      expect(result).toEqual({
+        position: probeConfig.startPosition,
+        direction: "N",
+      });
+    });
+  });
 });
