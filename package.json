@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/eduardogalbiati/mars-exploration-backend/issues"
   },
-  "homepage": "https://github.com/eduardogalbiati/mars-exploration-backend#readme"
+  "homepage": "https://github.com/eduardogalbiati/mars-exploration-backend#readme",
+  "devDependencies": {
+    "jest": "^27.1.0"
+  }
 }
