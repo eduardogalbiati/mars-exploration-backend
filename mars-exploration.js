@@ -20,11 +20,14 @@ class ProbeClass {
       }
       this.direction = this.directions[index + 1];
     }
+    if (side === "L") {
+      this.direction = this.directions[index - 1];
+    }
   }
 
   sendCommands(commands) {
     commands.forEach((command) => {
-      if (command === "R") {
+      if (command === "R" || command === "L") {
         this.setDirection(command);
       }
     });
