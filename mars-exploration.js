@@ -34,6 +34,11 @@ class ProbeClass {
         this.position[1]++;
       }
     }
+    if (this.direction === "E") {
+      if (this.position[0] + 1 <= this.gridSize[0]) {
+        this.position[0]++;
+      }
+    }
   }
 
   sendCommands(commands) {
