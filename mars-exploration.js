@@ -10,13 +10,25 @@ class ProbeClass {
     this.gridSize = config.gridSize;
   }
 
-  sendCommands(commands) {
-    if(commands[0] == 'R') {
-        return {
-            position: this.position,
-            direction: 'E',
-        }
+  setDirection(side) {
+    let index = this.directions.findIndex(
+      (direction) => direction === this.direction
+    );
+    if (side === "R") {
+      this.direction = this.directions[index + 1];
     }
+  }
+
+  sendCommands(commands) {
+    commands.forEach((command) => {
+      if (command === "R") {
+        this.setDirection(command);
+      }
+    });
+    return {
+      position: this.position,
+      direction: this.direction,
+    };
   }
 }
 
