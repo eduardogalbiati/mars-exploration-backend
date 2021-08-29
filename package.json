@@ -1,0 +1,24 @@
+{
+  "name": "mars-exploration-backend",
+  "version": "0.0.1",
+  "description": "Mars exploration backend structure",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/eduardogalbiati/mars-exploration-backend.git"
+  },
+  "keywords": [
+    "mars",
+    "exploration",
+    "test"
+  ],
+  "author": "eduardo galbiati",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eduardogalbiati/mars-exploration-backend/issues"
+  },
+  "homepage": "https://github.com/eduardogalbiati/mars-exploration-backend#readme"
+}
