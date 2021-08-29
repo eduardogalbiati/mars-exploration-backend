@@ -39,6 +39,11 @@ class ProbeClass {
         this.position[0]++;
       }
     }
+    if (this.direction === "S") {
+      if (this.position[1] - 1 >= 0) {
+        this.position[1]--;
+      }
+    }
   }
 
   sendCommands(commands) {
