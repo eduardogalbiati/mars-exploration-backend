@@ -67,5 +67,23 @@ describe("Mars exploration unit tests", () => {
         direction: "N",
       });
     });
+
+    it("should turn to left", () => {
+      const customProbeConfig = {
+        ...probeConfig,
+        startDirection: "W",
+      };
+
+      const commands = ["L"];
+
+      const Probe = new ProbeClass(customProbeConfig);
+
+      const result = Probe.sendCommands(commands);
+
+      expect(result).toEqual({
+        position: customProbeConfig.startPosition,
+        direction: "S",
+      });
+    });
   });
 });
