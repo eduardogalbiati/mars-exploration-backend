@@ -124,129 +124,209 @@ describe("Mars exploration unit tests", () => {
     });
 
     it("should NOT fly to north if probe direction is north and the probe is at the grid border", () => {
-        const customProbeConfig = {
-          ...probeConfig,
-          startDirection: "N",
-          startPosition: [5, 5],
-        };
-        const commands = ["M"];
-  
-        const Probe = new ProbeClass(customProbeConfig);
-  
-        const result = Probe.sendCommands(commands);
-  
-        expect(result).toEqual({
-          position: [5, 5],
-          direction: customProbeConfig.startDirection,
-        });
+      const customProbeConfig = {
+        ...probeConfig,
+        startDirection: "N",
+        startPosition: [5, 5],
+      };
+      const commands = ["M"];
+
+      const Probe = new ProbeClass(customProbeConfig);
+
+      const result = Probe.sendCommands(commands);
+
+      expect(result).toEqual({
+        position: [5, 5],
+        direction: customProbeConfig.startDirection,
       });
+    });
 
     it("should fly to east if probe direction is east", () => {
-        const customProbeConfig = {
-          ...probeConfig,
-          startDirection: "E",
-          startPosition: [0, 0],
-        };
-        const commands = ["M"];
-  
-        const Probe = new ProbeClass(customProbeConfig);
-  
-        const result = Probe.sendCommands(commands);
-  
-        expect(result).toEqual({
-          position: [1, 0],
-          direction: customProbeConfig.startDirection,
-        });
-      });
+      const customProbeConfig = {
+        ...probeConfig,
+        startDirection: "E",
+        startPosition: [0, 0],
+      };
+      const commands = ["M"];
 
-      it("should NOT fly to east if probe direction is east and the probe is at the grid border", () => {
-        const customProbeConfig = {
-          ...probeConfig,
-          startDirection: "E",
-          startPosition: [5, 5],
-        };
-        const commands = ["M"];
-  
-        const Probe = new ProbeClass(customProbeConfig);
-  
-        const result = Probe.sendCommands(commands);
-  
-        expect(result).toEqual({
-          position: [5, 5],
-          direction: customProbeConfig.startDirection,
-        });
-      });
+      const Probe = new ProbeClass(customProbeConfig);
 
-      it("should fly to south if probe direction is south", () => {
-        const customProbeConfig = {
-          ...probeConfig,
-          startDirection: "S",
-          startPosition: [1, 1],
-        };
-        const commands = ["M"];
-  
-        const Probe = new ProbeClass(customProbeConfig);
-  
-        const result = Probe.sendCommands(commands);
-  
-        expect(result).toEqual({
-          position: [1, 0],
-          direction: customProbeConfig.startDirection,
-        });
-      });
+      const result = Probe.sendCommands(commands);
 
-      it("should NOT fly to south if probe direction is south and the probe is at the grid border", () => {
-        const customProbeConfig = {
-          ...probeConfig,
-          startDirection: "S",
-          startPosition: [0, 0],
-        };
-        const commands = ["M"];
-  
-        const Probe = new ProbeClass(customProbeConfig);
-  
-        const result = Probe.sendCommands(commands);
-  
-        expect(result).toEqual({
-          position: [0, 0],
-          direction: customProbeConfig.startDirection,
-        });
+      expect(result).toEqual({
+        position: [1, 0],
+        direction: customProbeConfig.startDirection,
       });
+    });
 
-      it("should fly to west if probe direction is west", () => {
-        const customProbeConfig = {
-          ...probeConfig,
-          startDirection: "W",
-          startPosition: [1, 1],
-        };
-        const commands = ["M"];
-  
-        const Probe = new ProbeClass(customProbeConfig);
-  
-        const result = Probe.sendCommands(commands);
-  
-        expect(result).toEqual({
-          position: [0, 1],
-          direction: customProbeConfig.startDirection,
-        });
-      });
+    it("should NOT fly to east if probe direction is east and the probe is at the grid border", () => {
+      const customProbeConfig = {
+        ...probeConfig,
+        startDirection: "E",
+        startPosition: [5, 5],
+      };
+      const commands = ["M"];
 
-      it("should NOT fly to west if probe direction is west and the probe is at the grid border", () => {
-        const customProbeConfig = {
-          ...probeConfig,
-          startDirection: "W",
-          startPosition: [0, 0],
-        };
-        const commands = ["M"];
-  
-        const Probe = new ProbeClass(customProbeConfig);
-  
-        const result = Probe.sendCommands(commands);
-  
-        expect(result).toEqual({
-          position: [0, 0],
-          direction: customProbeConfig.startDirection,
-        });
+      const Probe = new ProbeClass(customProbeConfig);
+
+      const result = Probe.sendCommands(commands);
+
+      expect(result).toEqual({
+        position: [5, 5],
+        direction: customProbeConfig.startDirection,
       });
+    });
+
+    it("should fly to south if probe direction is south", () => {
+      const customProbeConfig = {
+        ...probeConfig,
+        startDirection: "S",
+        startPosition: [1, 1],
+      };
+      const commands = ["M"];
+
+      const Probe = new ProbeClass(customProbeConfig);
+
+      const result = Probe.sendCommands(commands);
+
+      expect(result).toEqual({
+        position: [1, 0],
+        direction: customProbeConfig.startDirection,
+      });
+    });
+
+    it("should NOT fly to south if probe direction is south and the probe is at the grid border", () => {
+      const customProbeConfig = {
+        ...probeConfig,
+        startDirection: "S",
+        startPosition: [0, 0],
+      };
+      const commands = ["M"];
+
+      const Probe = new ProbeClass(customProbeConfig);
+
+      const result = Probe.sendCommands(commands);
+
+      expect(result).toEqual({
+        position: [0, 0],
+        direction: customProbeConfig.startDirection,
+      });
+    });
+
+    it("should fly to west if probe direction is west", () => {
+      const customProbeConfig = {
+        ...probeConfig,
+        startDirection: "W",
+        startPosition: [1, 1],
+      };
+      const commands = ["M"];
+
+      const Probe = new ProbeClass(customProbeConfig);
+
+      const result = Probe.sendCommands(commands);
+
+      expect(result).toEqual({
+        position: [0, 1],
+        direction: customProbeConfig.startDirection,
+      });
+    });
+
+    it("should NOT fly to west if probe direction is west and the probe is at the grid border", () => {
+      const customProbeConfig = {
+        ...probeConfig,
+        startDirection: "W",
+        startPosition: [0, 0],
+      };
+      const commands = ["M"];
+
+      const Probe = new ProbeClass(customProbeConfig);
+
+      const result = Probe.sendCommands(commands);
+
+      expect(result).toEqual({
+        position: [0, 0],
+        direction: customProbeConfig.startDirection,
+      });
+    });
+  });
+  describe("Probe Construction and Commands validation tests", () => {
+    it("should throw an error if grid size has negative values", () => {
+      const customProbeConfig = {
+        ...probeConfig,
+        gridSize: [-1, -2],
+      };
+
+      expect(() => {
+        new ProbeClass(customProbeConfig);
+      }).toThrow("The grid size is invalid, cannot be negative");
+    });
+    it("should throw an error if direction is invalid", () => {
+      const customProbeConfig = {
+        ...probeConfig,
+        startDirection: "?",
+      };
+
+      expect(() => {
+        new ProbeClass(customProbeConfig);
+      }).toThrow(
+        'The probe direction "?" is invalid, available options are [N,E,S,W]'
+      );
+    });
+
+    it("should throw an error if startPosition-X is greater then grid size", () => {
+      const customProbeConfig = {
+        ...probeConfig,
+        startPosition: [6, 2],
+      };
+
+      expect(() => {
+        new ProbeClass(customProbeConfig);
+      }).toThrow("The probe is out of grid, invalid start position [6,2]");
+    });
+
+    it("should throw an error if startPosition-X is less then 0", () => {
+      const customProbeConfig = {
+        ...probeConfig,
+        startPosition: [-1, 5],
+      };
+
+      expect(() => {
+        new ProbeClass(customProbeConfig);
+      }).toThrow("The probe is out of grid, start position cannot be negative");
+    });
+
+    it("should throw an error if startPosition-Y is greater then grid size", () => {
+      const customProbeConfig = {
+        ...probeConfig,
+        startPosition: [2, 6],
+      };
+
+      expect(() => {
+        new ProbeClass(customProbeConfig);
+      }).toThrow("The probe is out of grid, invalid start position [2,6]");
+    });
+
+    it("should throw an error if startPosition-Y is less then 0", () => {
+      const customProbeConfig = {
+        ...probeConfig,
+        startPosition: [2, -1],
+      };
+
+      expect(() => {
+        new ProbeClass(customProbeConfig);
+      }).toThrow("The probe is out of grid, start position cannot be negative");
+    });
+
+    it("should throw an error if any command is invalid", () => {
+      const commands = ["?"];
+
+      const Probe = new ProbeClass(probeConfig);
+
+      expect(() => {
+        Probe.sendCommands(commands);
+      }).toThrow(
+        "Unable to process commands: command ? is not valid, available options are [L, M, R]"
+      );
+    });
   });
 });

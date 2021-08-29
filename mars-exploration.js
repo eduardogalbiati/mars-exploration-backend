@@ -5,6 +5,35 @@ class ProbeClass {
   directions = ["N", "E", "S", "W"];
 
   constructor(config) {
+    const xStartPosition = config.startPosition[0];
+    const yStartPosition = config.startPosition[1];
+
+    if (config.gridSize[0] <= 0 || config.gridSize[1] <= 0) {
+      throw new Error(`The grid size is invalid, cannot be negative`);
+    }
+    if (xStartPosition < 0 || yStartPosition < 0) {
+      throw new Error(
+        "The probe is out of grid, start position cannot be negative"
+      );
+    }
+    if (xStartPosition > config.gridSize[0]) {
+      throw new Error(
+        `The probe is out of grid, invalid start position [${xStartPosition},${yStartPosition}]`
+      );
+    }
+    if (yStartPosition > config.gridSize[1]) {
+      throw new Error(
+        `The probe is out of grid, invalid start position [${xStartPosition},${yStartPosition}]`
+      );
+    }
+    if (!this.directions.includes(config.startDirection)) {
+      throw new Error(
+        `The probe direction "${
+          config.startDirection
+        }" is invalid, available options are [${this.directions.join(",")}]`
+      );
+    }
+
     this.position = config.startPosition;
     this.direction = config.startDirection;
     this.gridSize = config.gridSize;
@@ -54,14 +83,23 @@ class ProbeClass {
   }
 
   sendCommands(commands) {
-    commands.forEach((command) => {
-      if (command === "R" || command === "L") {
-        this.setDirection(command);
-      }
-      if (command === "M") {
-        this.flyFoward();
-      }
-    });
+    commands
+      .map((element) => {
+        if (!["L", "M", "R"].includes(element)) {
+          throw new Error(
+            `Unable to process commands: command ${element} is not valid, available options are [L, M, R]`
+          );
+        }
+        return element;
+      })
+      .forEach((command) => {
+        if (command === "R" || command === "L") {
+          this.setDirection(command);
+        }
+        if (command === "M") {
+          this.flyFoward();
+        }
+      });
     return {
       position: this.position,
       direction: this.direction,
