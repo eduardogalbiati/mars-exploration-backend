@@ -28,10 +28,17 @@ class ProbeClass {
     }
   }
 
+  flyFoward() {
+    this.position[1]++;
+  }
+
   sendCommands(commands) {
     commands.forEach((command) => {
       if (command === "R" || command === "L") {
         this.setDirection(command);
+      }
+      if (command === "M") {
+        this.flyFoward();
       }
     });
     return {
