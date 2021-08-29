@@ -49,6 +49,23 @@ describe("Mars exploration unit tests", () => {
             position: probeConfig.startPosition,
             direction: 'E'
         })
+    });
+
+    it('should turn to right if position equals last element of directions array', () => {
+        const commands = ['R'];
+
+        const customProbeConfig = {
+            ...probeConfig,
+            startDirection: 'W'
+        }
+        const Probe = new ProbeClass(customProbeConfig);
+
+        const result = Probe.sendCommands(commands);
+
+        expect(result).toEqual({
+            position: probeConfig.startPosition,
+            direction: 'N'
+        })
     })
   })
 });
