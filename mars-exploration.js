@@ -29,25 +29,30 @@ class ProbeClass {
   }
 
   flyFoward() {
-    if (this.direction === "N") {
-      if (this.position[1] + 1 <= this.gridSize[1]) {
-        this.position[1]++;
-      }
-    }
-    if (this.direction === "E") {
-      if (this.position[0] + 1 <= this.gridSize[0]) {
-        this.position[0]++;
-      }
-    }
-    if (this.direction === "S") {
-      if (this.position[1] - 1 >= 0) {
-        this.position[1]--;
-      }
-    }
-    if (this.direction === "W") {
-      if (this.position[0] - 1 >= 0) {
-        this.position[0]--;
-      }
+    switch (this.direction) {
+      case "N":
+        if (this.position[1] + 1 <= this.gridSize[1]) {
+          this.position[1]++;
+        }
+        break;
+      case "E":
+        if (this.position[0] + 1 <= this.gridSize[0]) {
+          this.position[0]++;
+        }
+        break;
+      case "S":
+        if (this.position[1] - 1 >= 0) {
+          this.position[1]--;
+        }
+        break;
+      case "W":
+        if (this.position[0] - 1 >= 0) {
+          this.position[0]--;
+        }
+        break;
+
+      default:
+        break;
     }
   }
 
