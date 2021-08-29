@@ -21,6 +21,9 @@ class ProbeClass {
       this.direction = this.directions[index + 1];
     }
     if (side === "L") {
+      if (index == 0) {
+        index = index + 4;
+      }
       this.direction = this.directions[index - 1];
     }
   }
