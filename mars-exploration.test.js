@@ -1,7 +1,7 @@
 const { ProbeClass } = require("./mars-exploration");
 
 describe("Mars exploration use case", () => {
-  xit("should return final position after send commands to first probe", () => {
+  it("should return final position after send commands to first probe", () => {
     const probeConfig = {
       startPosition: [1, 2],
       startDirection: "N",
@@ -16,6 +16,24 @@ describe("Mars exploration use case", () => {
     expect(result).toEqual({
       position: [1, 3],
       direction: "N",
+    });
+  });
+
+  it("should return final position after send commands to second probe", () => {
+    const probeConfig = {
+      startPosition: [3, 3],
+      startDirection: "E",
+      gridSize: [5, 5],
+    };
+    const commands = ["M", "M", "R", "M", "M", "R", "M", "R", "R", "M"];
+
+    const Probe = new ProbeClass(probeConfig);
+
+    const result = Probe.sendCommands(commands);
+
+    expect(result).toEqual({
+      position: [5, 1],
+      direction: "E",
     });
   });
 });
