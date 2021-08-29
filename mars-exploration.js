@@ -29,7 +29,11 @@ class ProbeClass {
   }
 
   flyFoward() {
-    this.position[1]++;
+    if (this.direction === "N") {
+      if (this.position[1] + 1 <= this.gridSize[1]) {
+        this.position[1]++;
+      }
+    }
   }
 
   sendCommands(commands) {
