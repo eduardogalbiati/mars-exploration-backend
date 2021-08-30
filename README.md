@@ -11,6 +11,10 @@ npm start
 npm run test
 ```
 
+### Test Coverage
+![Screenshot from 2021-08-29 21-16-00](https://user-images.githubusercontent.com/7586945/131270149-632b8099-7403-4742-8f7c-c403418f9d91.png)
+
+
 ## About application
 
 ### Input
